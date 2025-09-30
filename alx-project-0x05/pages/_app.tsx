@@ -1,16 +1,14 @@
+import Layout from "@/components/layouts/Layout";
 import "@/styles/globals.css";
-import { Montserrat } from "next/font/google";
 import type { AppProps } from "next/app";
-
-const montserrat = Montserrat({
-  subsets: ["latin"],
-  weight: ["400", "500", "700"], // choose only the weights you need
-});
+import { CountProvider } from "@/context/CountContext";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <main className={montserrat.className}>
-      <Component {...pageProps} />
-    </main>
+    <CountProvider>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </CountProvider>
   );
 }
